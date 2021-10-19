@@ -28,6 +28,7 @@ use curv::BigInt;
 const SECURITY: usize = 256;
 
 // u_i is private key and {u__i, prefix} are extended private key.
+#[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct Keys {
     pub u_i: FE,
     pub y_i: GE,
@@ -35,6 +36,7 @@ pub struct Keys {
     pub party_index: usize,
 }
 
+#[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct KeyGenBroadcastMessage1 {
     com: BigInt,
 }
@@ -44,7 +46,7 @@ pub struct Parameters {
     pub threshold: usize,   //t
     pub share_count: usize, //n
 }
-#[derive(Clone, Serialize, Deserialize)]
+#[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct SharedKeys {
     pub y: GE,
     pub x_i: FE,
@@ -57,18 +59,19 @@ pub struct EphemeralKey {
     pub party_index: usize,
 }
 
-#[derive(Clone, Serialize, Deserialize)]
+#[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct EphemeralSharedKeys {
     pub R: GE,
     pub r_i: FE,
 }
 
+#[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct LocalSig {
     gamma_i: FE,
     k: FE,
 }
 
-#[derive(Clone, Serialize, Deserialize)]
+#[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct Signature {
     pub sigma: FE,
     pub R: GE,
